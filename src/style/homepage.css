@@ -1,0 +1,17 @@
+body{
+
+}
+div#imagebox {
+    background-image:url("../../src/imgs/ladyfern-photos-unsplash.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position-y:bottom;
+    height:700px;
+    width:100%;
+}
+
+#container {
+    width:75%;
+    margin:auto;
+    background-color:#e7eee9;
+}

@@ -1,17 +1,90 @@
-body{
-
-}
-div#imagebox {
-    background-image:url("../../src/imgs/ladyfern-photos-unsplash.jpg");
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-position-y:bottom;
-    height:700px;
-    width:100%;
+.item1 { 
+    grid-area: topimage; 
+    background-image: url("../../src/imgs/image1.png");  
+    background-repeat: no-repeat; 
+    background-size: 110% 110%; 
+    color: white;
+    text-indent: 100px;
+    font-size: 30px;
 }
 
-#container {
-    width:75%;
-    margin:auto;
-    background-color:#e7eee9;
+.item2 { 
+    grid-area: description; 
+    text-align: center;
+ }
+
+h2 {
+    font-family: cursive;
+    font-size: 25px;
+}
+
+p {
+    font-family: cursive;
+    font-size: 15px;
+}
+
+.item3 { 
+    grid-area: secondimage; 
+}
+
+.item4 { 
+    grid-area: map; 
+    border: 5px solid green;
+}
+
+a {
+  font-size: 20px;
+  text-decoration: none;
+  background-color: lightgrey;
+  color: blue;
+  padding: 20px;
+  border: 2.5px solid green;
+}
+
+a:hover {
+    background-color: orange;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+	display: grid;
+    background: lightgreen;
+	  grid-template-areas:
+		'topimage topimage'	
+		'description secondimage'
+		'map map';
+	grid-gap: 10px;
+}	
+
+body {
+    margin: 0;
+    background-image: url("../../src/imgs/leaves.jpg");
+}
+
+@media screen and (max-width: 1024px) {
+
+	h2 {
+        font-size: 15px;
+    }
+    p {
+        font-size: 10px;
+    }
+    .container {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        background: lightgreen;
+          grid-template-areas:
+            'topimage'	
+            'description'
+            'secondimage'
+            'map';
+        grid-gap: 10px;
+    }	
+
+    .item3 { 
+        text-align: center;
+    }
+
 }

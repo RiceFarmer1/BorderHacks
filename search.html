@@ -1,0 +1,39 @@
+<html>
+   <head>
+      <title>Greenspace Finder</title>
+      <link rel="stylesheet" href="src\style\search-filter.css">
+      <script type="text/javascript" src="src\search.js"></script>
+      <link rel="stylesheet" href="src/style/navbar.css">
+   </head>
+
+   <body onload="onLoad()">
+      
+      <div class="container">
+
+         <br>
+
+         <nav class = "topnav" id = "mytopnav">
+            <a href = "index.html ">Homepage</a>
+            <a class = "current" href = "search.html">Search for Trails</a>
+            <a href = "">Add Reviews</a>
+         </nav>
+
+         <br>
+
+         <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for parks.." title="Type in a park">
+
+         <br><br><br>
+
+         <button id="myToggle" onclick="collapseAll()">Collapse All</button>
+         <button id="myToggle" onclick="openAll()">Open All</button>
+
+         <br><br>
+
+         <ul id="myUL"></ul>
+
+         <br>
+
+      </div>
+      
+   </body>
+</html>

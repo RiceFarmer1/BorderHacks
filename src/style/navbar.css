@@ -1,0 +1,27 @@
+.topnav {
+  margin-left: 2.5%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.topnav a {
+  float: left;  
+  background-color: lightgreen;
+  border: 2.5px solid gray;
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding: 15px 45px;
+}
+
+a.current {
+  background-color: green;
+  color: white;
+}
+
+.topnav a:hover {
+  background-color: aqua;
+  color: black;
+}

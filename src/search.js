@@ -14,7 +14,7 @@ function onLoad() {
 
     console.log(csvData)
     var i;
-    for (i=1;i<csvData.length;i++){
+    for (i=1;i<csvData.length-1;i++){
         const parent = document.getElementById("myUL");
         const group = document.createElement("li")
         const btn = document.createElement("button");

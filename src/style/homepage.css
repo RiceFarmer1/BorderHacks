@@ -4,8 +4,11 @@
     background-repeat: no-repeat; 
     background-size: 110% 110%; 
     color: white;
+}
+
+h1 {
     text-indent: 100px;
-    font-size: 30px;
+    font-size: 50px;
 }
 
 .item2 { 
@@ -34,19 +37,6 @@ p {
     border: 5px solid green;
 }
 
-a {
-  font-size: 20px;
-  text-decoration: none;
-  background-color: lightgrey;
-  color: blue;
-  padding: 20px;
-  border: 2.5px solid green;
-}
-
-a:hover {
-    background-color: orange;
-}
-
 .container {
     width: 70%;
     margin: auto;
@@ -60,6 +50,7 @@ a:hover {
 }	
 
 body {
+    height: 100%;
     margin: 0;
     background-image: url("../../src/imgs/leaves.jpg");
 }

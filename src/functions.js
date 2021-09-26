@@ -1,18 +1,19 @@
+var csvData;
+var url = "https://raw.githubusercontent.com/RiceFarmer1/BorderHacks/main/src/data/data.csv";
+
+var request = new XMLHttpRequest();  
+request.open("GET", url, false);   
+request.send(null);  
+
+csvData = new Array();
+var jsonObject = request.responseText.split(/\r?\n|\r/);
+for (var i = 0; i < jsonObject.length; i++) {
+    csvData.push(jsonObject[i].split(','));
+}
+
+var comments = new Array();
 function onLoad() {
 
-    var url = "https://raw.githubusercontent.com/RiceFarmer1/BorderHacks/main/src/data/data.csv";
-
-    var request = new XMLHttpRequest();  
-    request.open("GET", url, false);   
-    request.send(null);  
-
-    var csvData = new Array();
-    var jsonObject = request.responseText.split(/\r?\n|\r/);
-    for (var i = 0; i < jsonObject.length; i++) {
-        csvData.push(jsonObject[i].split(','));
-    }
-
-    console.log(csvData)
     var i;
     for (i=1;i<csvData.length-1;i++){
         const parent = document.getElementById("myUL");
@@ -84,6 +85,7 @@ function collapseAll() {
 }
 
 function openAll() {
+    console.log(csvData)
     var group = document.getElementById("myUL").getElementsByClassName("group");
     var button;
     for (var i = 0; i < group.length; i++){
@@ -91,4 +93,40 @@ function openAll() {
         button.classList.toggle('active', true)
         button.nextElementSibling.style.display = "";
     }
+}
+
+function createOptions() {
+    var multiselect = document.getElementById("trails");
+    for (i=1;i<csvData.length;i++){
+        const val = document.createElement("option");
+        val.value = csvData[i][1];
+        val.innerHTML = csvData[i][1];
+        multiselect.appendChild(val);
+    }
+    const addComment = (ev)=>{
+        ev.preventDefault();
+        let comment = {
+            time: Date.now(),
+            user: document.getElementById("username").value || "anonymous",
+            email: document.getElementById("email").value || "n/a",
+            trail: document.getElementById("trails").value || "n/a",
+            mesg: document.getElementById("comment").value || "hello world!",
+            rating: document.getElementById("rating").value || "n/a"           
+        };
+        comments.push(comment);
+        //you can also send comment to a json file on a cloud server to save it or smth
+        var commentbox = document.getElementById("allComments");
+        var newcomment = document.createElement("div");
+        for (var i = 0; i<Object.keys(comment).length;i++){
+            var item = document.createElement("p");
+            item.innerHTML = Object.values(comment)[i];
+            newcomment.appendChild(item);
+        }
+        commentbox.appendChild(newcomment);
+    }
+    document.getElementById("submit").addEventListener("click", addComment);
+}
+
+function updateSlider(number) {
+    document.getElementById("slidervalue").innerHTML = number;
 }

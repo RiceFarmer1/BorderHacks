@@ -8,9 +8,14 @@
    <body onload="onLoad()">
       
       <div class="container">
-         <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for parks.." title="Type in a park">
-         <button id="myToggle" onclick="collapseAll()">collapse all</button>
-         <button id="myToggle" onclick="openAll()">open all</button>
+         <div>
+            <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for parks.." title="Type in a park">
+         </div>
+         <div>
+            <button id="myToggle" onclick="collapseAll()">collapse all</button>
+            <button id="myToggle" onclick="openAll()">open all</button>
+         </div>
+
          <ul id="myUL">
           </ul>
       </div>

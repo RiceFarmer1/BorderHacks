@@ -4,6 +4,7 @@
   min-height: 100%;
   margin: auto;
   background: #daf0da;
+  text-align:center;
 }	
 body {
   margin: 0;
@@ -15,6 +16,7 @@ body {
   margin-right: auto;
   margin-top: 20px;
   width: 60%;
+  text-align: center;
 }
 #myUL button {
   border: 1px solid #535353;

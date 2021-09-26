@@ -17,7 +17,7 @@ body {
   width: 60%;
 }
 #myUL button {
-  border: 1px solid rgb(83, 83, 83);
+  border: 1px solid #535353;
   margin-top: -1px;
   background-color: #e6e6e6;
   padding: 12px;
@@ -29,11 +29,17 @@ body {
   margin-left: auto;
   margin-right:auto;
 }
+#myUL button:hover {
+  background-color: #e0e0e0;
+}
+#myUL button:active {
+  background-color: #cecece
+}
 #myUL {
   list-style-type: none;
 }
 .infobox {
-  border: 1px solid rgb(83, 83, 83);
+  border: 1px solid #4d4d4d;
   background-color: #ffffff;
   margin-top: -1px;
   margin-bottom:1px;

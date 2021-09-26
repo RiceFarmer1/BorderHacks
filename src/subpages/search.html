@@ -5,10 +5,12 @@
       <link rel="stylesheet" href="../../src/style/search-filter.css">
       <script type="text/javascript" src="../search.js"></script>
    </head>
-   <body onload="createParks()">
+   <body onload="onLoad()">
       
       <div class="container">
          <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for parks.." title="Type in a park">
+         <button id="myToggle" onclick="collapseAll()">collapse all</button>
+         <button id="myToggle" onclick="openAll()">open all</button>
          <ul id="myUL">
           </ul>
       </div>

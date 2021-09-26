@@ -7,17 +7,17 @@
    <body onload="createOptions()">
         <div class="container">
             <form>
-                <input type="text" id="username" name="username" placeholder="shown name">
+                <input type="text" id="username" name="username" placeholder="shown name" required="true">
                 <input type="text" id="email" name="email" placeholder="shown email"><br>
-                <select id="trails" name="trails" placeholder="select a trail" required="false">
+                <select id="trails" name="trails" placeholder="select a trail">
                     <!--option value="volvo">Volvo</option-->
                   </select><br>
-                <input type="text" id="comment" name="comment" placeholder="write your comment here...">
-                <input type="range" id="rating" name="rating" min="0" max="10">
-                <p>2.5</p>
-                <button onclick="">comment!</button>
+                <input type="text" id="comment" name="comment" placeholder="write your comment here..." required="true">
+                <input type="range" id="rating" name="rating" min="1" max="10" onchange="updateSlider(this.value)">
+                <p id="slidervalue">5</p>
+                <button id="submit">comment!</button>
             </form>
-            <div class="comments">
+            <div id="allComments">
 
             </div>
         </div>

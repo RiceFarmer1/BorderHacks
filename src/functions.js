@@ -10,6 +10,8 @@ var jsonObject = request.responseText.split(/\r?\n|\r/);
 for (var i = 0; i < jsonObject.length; i++) {
     csvData.push(jsonObject[i].split(','));
 }
+
+var comments = new Array();
 function onLoad() {
 
     var i;
@@ -101,5 +103,30 @@ function createOptions() {
         val.innerHTML = csvData[i][1];
         multiselect.appendChild(val);
     }
+    const addComment = (ev)=>{
+        ev.preventDefault();
+        let comment = {
+            time: Date.now(),
+            user: document.getElementById("username").value || "anonymous",
+            email: document.getElementById("email").value || "n/a",
+            trail: document.getElementById("trails").value || "n/a",
+            mesg: document.getElementById("comment").value || "hello world!",
+            rating: document.getElementById("rating").value || "n/a"           
+        };
+        comments.push(comment);
+        //you can also send comment to a json file on a cloud server to save it or smth
+        var commentbox = document.getElementById("allComments");
+        var newcomment = document.createElement("div");
+        for (var i = 0; i<Object.keys(comment).length;i++){
+            var item = document.createElement("p");
+            item.innerHTML = Object.values(comment)[i];
+            newcomment.appendChild(item);
+        }
+        commentbox.appendChild(newcomment);
+    }
+    document.getElementById("submit").addEventListener("click", addComment);
+}
 
+function updateSlider(number) {
+    document.getElementById("slidervalue").innerHTML = number;
 }

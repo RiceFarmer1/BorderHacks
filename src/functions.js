@@ -15,7 +15,7 @@ var comments = new Array();
 function onLoad() {
 
     var i;
-    for (i=1;i<csvData.length-1;i++){
+    for (i=1;i<csvData.length;i++){
         const parent = document.getElementById("myUL");
         const group = document.createElement("li")
         const btn = document.createElement("button");

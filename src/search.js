@@ -27,28 +27,17 @@ function createParks() {
     }
 }
 function test() {
-    function readTextFile(file){
-        var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", file, false);
-        rawFile.onreadystatechange = function ()
-        {
-            if(rawFile.readyState === 4)
-            {
-                if(rawFile.status === 200 || rawFile.status == 0)
-                {
-                    var allText = rawFile.responseText;
-                    alert(allText);
-                }
-            }
-        }
-        rawFile.send(null);
-    } // source: https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file
+    var url = "https://gist.githubusercontent.com/guest271314/c4eebf14b4a3cfd36f58/raw/37b82a07ec91e9f35396a23ee7aac26b8dd52c23/file.csv";
 
-    const csvFile = readTextFile("https://raw.githubusercontent.com/RiceFarmer1/BorderHacks/main/src/Fundy_NP_Forest_TrailConditionIndex_2014_data.csv");
-    console.log(typeof(csvFile))
-    //const reader = new FileReader();
+    var request = new XMLHttpRequest();  
+    request.open("GET", url, false);   
+    request.send(null);  
 
-    //const text = e.target.result;
-    //document.write(text);
-
+    var csvData = new Array();
+    var jsonObject = request.responseText.split(/\r?\n|\r/);
+    for (var i = 0; i < jsonObject.length; i++) {
+        csvData.push(jsonObject[i].split(','));
+    }
+    // Retrived data from csv file content
+    console.log(csvData);
 }

@@ -1,33 +1,38 @@
-function myFunction() {
-    var input, filter, ul, li, a, i, txtValue;
+function searchFunction() {
+    var input, filter, ul, li, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
+    group = ul.getElementsByClassName("group");
+    for (i = 0; i < group.length; i++) {
+        txtValue = group[i].getElementsByTagName("button")[0].innerHTML;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
+            group[i].style.display = "";
         } else {
-            li[i].style.display = "none";
+            group[i].style.display = "none";
         }
     }
 }
-function createParks() {
-    
-    for (i=0;i<3;i++){
-        const parent = document.getElementById("myUL");
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        const node = document.createTextNode("park name here");
-        a.appendChild(node);
-        li.appendChild(a);
-        parent.appendChild(li);
-    }
+
+function buttonFunction() {
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+    });
+} 
 }
-function test() {
-    var url = "https://gist.githubusercontent.com/guest271314/c4eebf14b4a3cfd36f58/raw/37b82a07ec91e9f35396a23ee7aac26b8dd52c23/file.csv";
+
+function createParks() {
+    var url = "https://raw.githubusercontent.com/RiceFarmer1/BorderHacks/main/src/data/data.csv";
 
     var request = new XMLHttpRequest();  
     request.open("GET", url, false);   
@@ -38,6 +43,32 @@ function test() {
     for (var i = 0; i < jsonObject.length; i++) {
         csvData.push(jsonObject[i].split(','));
     }
-    // Retrived data from csv file content
-    console.log(csvData);
+
+    console.log(csvData)
+    var i;
+    for (i=1;i<csvData.length;i++){
+        const parent = document.getElementById("myUL");
+        const group = document.createElement("li")
+        const btn = document.createElement("button");
+        btn.innerHTML = csvData[i][1];
+        btn.className = "collapsible";
+        btn.onclick = buttonFunction();
+        group.className = "group";
+        
+        const div = document.createElement("div");
+        for (var j = 0; j < csvData[i].length; j++){
+            var text = csvData[0][j] + ": " + csvData[i][j];
+            const li = document.createElement("li");
+            li.innerHTML = text;
+            li.className = "infolist";
+            div.appendChild(li);
+        }
+        
+        div.style.display = "none";
+        div.className="infobox"
+
+        group.appendChild(btn);
+        group.appendChild(div);
+        parent.appendChild(group);
+    }
 }

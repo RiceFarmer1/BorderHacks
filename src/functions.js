@@ -1,18 +1,17 @@
+var csvData;
+var url = "https://raw.githubusercontent.com/RiceFarmer1/BorderHacks/main/src/data/data.csv";
+
+var request = new XMLHttpRequest();  
+request.open("GET", url, false);   
+request.send(null);  
+
+csvData = new Array();
+var jsonObject = request.responseText.split(/\r?\n|\r/);
+for (var i = 0; i < jsonObject.length; i++) {
+    csvData.push(jsonObject[i].split(','));
+}
 function onLoad() {
 
-    var url = "https://raw.githubusercontent.com/RiceFarmer1/BorderHacks/main/src/data/data.csv";
-
-    var request = new XMLHttpRequest();  
-    request.open("GET", url, false);   
-    request.send(null);  
-
-    var csvData = new Array();
-    var jsonObject = request.responseText.split(/\r?\n|\r/);
-    for (var i = 0; i < jsonObject.length; i++) {
-        csvData.push(jsonObject[i].split(','));
-    }
-
-    console.log(csvData)
     var i;
     for (i=1;i<csvData.length;i++){
         const parent = document.getElementById("myUL");
@@ -84,6 +83,7 @@ function collapseAll() {
 }
 
 function openAll() {
+    console.log(csvData)
     var group = document.getElementById("myUL").getElementsByClassName("group");
     var button;
     for (var i = 0; i < group.length; i++){
@@ -91,4 +91,15 @@ function openAll() {
         button.classList.toggle('active', true)
         button.nextElementSibling.style.display = "";
     }
+}
+
+function createOptions() {
+    var multiselect = document.getElementById("trails");
+    for (i=1;i<csvData.length;i++){
+        const val = document.createElement("option");
+        val.value = csvData[i][1];
+        val.innerHTML = csvData[i][1];
+        multiselect.appendChild(val);
+    }
+
 }

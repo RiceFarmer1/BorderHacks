@@ -1,0 +1,25 @@
+<html>
+   <head>
+      <title>greenspace finder</title>
+      <link rel="icon" href="../../src/imgs/favicon.png" type="image/x-icon">
+      <script type="text/javascript" src="../functions.js"></script>
+    </head>
+   <body onload="createOptions()">
+        <div class="container">
+            <form>
+                <input type="text" id="username" name="username" placeholder="shown name">
+                <input type="text" id="email" name="email" placeholder="shown email"><br>
+                <select id="trails" name="trails" placeholder="select a trail" required="false">
+                    <!--option value="volvo">Volvo</option-->
+                  </select><br>
+                <input type="text" id="comment" name="comment" placeholder="write your comment here...">
+                <input type="range" id="rating" name="rating" min="0" max="10">
+                <p>2.5</p>
+                <button onclick="">comment!</button>
+            </form>
+            <div class="comments">
+
+            </div>
+        </div>
+   </body>
+</html>
